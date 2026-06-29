@@ -28,7 +28,12 @@ class HomeController extends Controller
                 ]
             );
 
-            return view('index', [ 
+            // SISLAC: novo dashboard administrativo (design system appsislac).
+            // Renderiza 'dashboards.admin-sislac' diretamente, que extende o
+            // novo master 'layouts.sislac.master' (sidebar branca + tema claro).
+            // O dashboard legado 'layouts.admin-dashboard' continua disponível
+            // mas não é mais o caminho default para admin/doctor.
+            return view('dashboards.admin-sislac', [
                 'total_appointment' => DB::select('SELECT COUNT(id) AS total FROM appointments')[0]->total,
                 'total_exam_month_current' => $examsMonths[0]->total,
                 'total_exams' => DB::select("SELECT COUNT(id) AS total FROM appointment_exams WHERE (status = 0 OR status = 1)")[0]->total,
