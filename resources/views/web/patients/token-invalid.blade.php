@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <title>Token inválido</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Sistema para Laboratórios, Clinicas e Hospitais" />
+    <meta name="author" content="Sislac" />
+    <meta name="robots" content="noindex,nofollow">
+</head>
+
+<body style="background-color: #F2F2F2; font-family: Arial, Helvetica, sans-serif; padding: 20px;">
+   <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div style="background-color: #556ee6; border-radius: 50%; padding: 20px;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="#FFF" height="90" width="90" viewBox="0 0 48 48">
+                <path d="M14 27.4q-1.4 0-2.4-1t-1-2.4q0-1.4 1-2.4t2.4-1q1.4 0 2.4 1t1 2.4q0 1.4-1 2.4t-2.4 1Zm0 8.6q-5 0-8.5-3.5T2 24q0-5 3.5-8.5T14 12q3.6 0 6.3 1.7 2.7 1.7 4.25 5.15h17.8L48 24.5l-8.35 7.65-4.4-3.2-4.4 3.2-3.75-3h-2.55q-1.25 3-3.925 4.925Q17.95 36 14 36Zm0-3q2.9 0 5.35-1.925 2.45-1.925 3.15-4.925h5.7l2.7 2.25 4.4-3.15 4.1 3.1 4.25-3.95-2.55-2.55H22.5q-.6-2.8-3-4.825Q17.1 15 14 15q-3.75 0-6.375 2.625T5 24q0 3.75 2.625 6.375T14 33Z"/>
+            </svg>
+        </div>
+        <h1 style="color: #556ee6; font-size: 18px; margin-top: 15px; text-align: center; margin-bottom: 10px;">
+            <em style="color: #888;">Oops!</em> <strong>Token inválido!</strong>
+        </h1>
+        <div style="margin-bottom: 15px; width: 50%; border-top: 1px dashed #556ee6;"></div>
+        <div style="color: #888; font-size: 16px; text-align: center;">
+            O token de acesso não é válido, para mais detalhes entre em contato com o setor responsável pelo seu atendimento!
+        </div>
+        <div>
+            <img src="{{ asset('assets/images/error-img.png') }}" style="width: 100%;" alt="Não encontrado">
+        </div>
+    </div>
+</body>
+
+</html>

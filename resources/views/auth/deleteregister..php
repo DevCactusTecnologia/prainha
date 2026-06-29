@@ -1,0 +1,142 @@
+@extends('layouts.master-without-nav')
+
+@section('title') {{ __("Cadastro") }} @endsection
+
+@section('body')
+<body>
+@endsection
+
+@section('content')
+    <div class="account-pages my-5 pt-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="card overflow-hidden">
+                        <div class="bg-soft-primary">
+                            <div class="row">
+                                <div class="col-7">
+                                    <div class="text-primary p-4">
+                                        <h5 class="text-primary">{{ __("Cadastro de Pacientes") }}</h5>
+                                        <p>Criar conta {{ config('app.name'); }} agora.</p>
+                                    </div>
+                                </div>
+                                <div class="col-5 align-self-end">
+                                    <img src="{{ URL::asset('assets/images/profile-img.png') }}" alt=""
+                                        class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div>
+                                <a href="{{ url('/') }}">
+                                    <div class="avatar-md profile-user-wid mb-4">
+                                        <span class="avatar-title rounded-circle bg-light">
+                                            <img src="{{ URL::asset('assets/images/logo.png') }}" alt=""
+                                                class="rounded-circle" height="34">
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="p-2">
+                                <form method="POST" class="form-horizontal mt-4" action="{{ url('register') }}">
+                                    @csrf
+                                    @if ($msg = Session::get('error'))
+                                        <div class="alert alert-danger">
+                                            <span> {{ $msg }} </span>
+                                        </div>
+                                    @endif
+                                    <div class="form-group">
+                                        <label for="first_name">{{ __("Primeiro Nome ") }}<span
+                                            class="text-danger">*</span></label>
+                                        <input type="text"
+                                            class="form-control @error('first_name') is-invalid @enderror"
+                                            value="{{ old('first_name') }}" name="first_name" id="userfirstname"
+                                            placeholder="{{ __("Digite o primeiro nome") }}">
+                                        @error('first_name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="last_name">{{ __("Sobrenome ") }}<span
+                                            class="text-danger">*</span></label>
+                                        <input type="text" class="form-control @error('last_name') is-invalid @enderror"
+                                            value="{{ old('last_name') }}" name="last_name" id="userlastname"
+                                            placeholder="{{ __("Digite o sobrenome") }}">
+                                        @error('last_name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="usermobile">{{ __("Nº de Contato ") }}<span
+                                            class="text-danger">*</span></label>
+                                        <input type="tel" class="form-control @error('mobile') is-invalid @enderror"
+                                            value="{{ old('mobile') }}" name="mobile" id="usermobile"
+                                            placeholder="{{ __("Digite o nº de contato") }}">
+                                        @error('mobile')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="useremail">{{ __("E-mail ") }}<span
+                                            class="text-danger">*</span></label>
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                            value="{{ old('email') }}" id="useremail" name="email"
+                                            placeholder="{{ __("Digite o e-amil") }}">
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="userpassword">{{ __("Senha ") }}<span
+                                            class="text-danger">*</span></label>
+                                        <input type="password"
+                                            class="form-control @error('password') is-invalid @enderror"
+                                            value="{{ old('password') }}" name="password" id="userpassword"
+                                            placeholder="{{ __("Digite a senha") }}">
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="userpassword">{{ __("Confirmar Senha ") }} <span
+                                            class="text-danger">*</span></label>
+                                        <input id="password-confirm" type="password" name="password_confirmation"
+                                            class="form-control @error('password') is-invalid @enderror"
+                                            placeholder="{{ __("Digite a senha novamente ") }}">
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="mt-4">
+                                        <button class="btn btn-primary btn-block waves-effect waves-light"
+                                            type="submit">{{ __("Cadastrar") }}</button>
+                                    </div>
+                                    <div class="mt-4 text-center">
+                                        <p class="mb-0">Ao se cadastrar você concorda com os {{ config('app.name'); }} <a href="#" class="text-primary">{{ __("Termos de uso") }}</a></p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <p>{{ __("Já tem uma conta ?") }} <a href="{{ url('login') }}"
+                                class="font-weight-medium text-primary">{{ __("Login") }} </a> </p>
+                        <p>© {{ date('Y') }} {{ config('app.name'); }}. Feito com <i class="mdi mdi-heart text-danger"></i> {{ __("by DevCactus") }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
